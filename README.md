@@ -1,6 +1,6 @@
 # KRS-Billing | V1.0
 
-### **Overview: **
+### Overview: 
 
 Elevate your server’s job experience with **KRS-Billing**, an advanced billing system designed to enhance gameplay and streamline transactions. Our system features a unique, clean, and user-friendly interface, making it easy for workers to manage and issue bills with precision.
 
@@ -15,6 +15,28 @@ Elevate your server’s job experience with **KRS-Billing**, an advanced billing
 ### **Why Choose KRS-Billing?**
 
 In many servers, the billing systems are always boaring and ugly or just buggy and usless in this system the money will be taken and received to the boss menu directly...
+
+## Exports
+
+### Server-side:
+```lua
+exports['krs-billing']:BillPlayer(data)
+```
+
+### Client-side:
+```lua
+exports['krs-billing']:BillPlayer(data)
+```
+
+### Data Structure:
+```lua
+data = {
+    biller = 'none',  -- 'none' indicates no specific biller; to set a real biller, input the biller’s CID
+    reason = 'reason',
+    amount = 555,
+}
+```
+
 
 ### Preview: ![image](https://github.com/user-attachments/assets/0eb52971-fbcc-4468-b538-e80661ded8b3) 
 ![image](https://github.com/user-attachments/assets/9b338407-471d-44e1-b50e-690a90387584)
