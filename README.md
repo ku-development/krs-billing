@@ -1,7 +1,7 @@
 # KRS-Billing | V1.0 | Not Finished But Probbley will finish it tommrow its unuseable for now
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](link_to_releases)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/license-GNU-green.svg)](https://opensource.org/licenses/MIT)
 [![Issues](https://img.shields.io/github/issues/ku-development/krs-billing)](https://github.com/ku-development/krs-billing/issues)
 [![Contributors](https://img.shields.io/github/contributors/ku-development/krs-billing)](none)
 
