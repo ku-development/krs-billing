@@ -1,4 +1,4 @@
-# KRS-Billing | V1.0
+# KRS-Billing | V1.0 | Not Finished But Probbley will finish it tommrow its unuseable for now
 
 ### Overview: 
 
