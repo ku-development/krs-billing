@@ -32,6 +32,7 @@ exports['krs-billing']:BillPlayer(data)
 ```lua
 data = {
     biller = 'none',  -- 'none' indicates no specific biller; to set a real biller, input the biller’s CID
+    receiver = 'none' -- receiver cid 
     reason = 'reason',
     amount = 555,
 }
@@ -43,3 +44,4 @@ data = {
 ![image](https://github.com/user-attachments/assets/7b5ebd75-9c2e-472d-9dae-8d8040827e64)
 ![image](https://github.com/user-attachments/assets/bdc03201-9f2a-4b2a-acae-f0c8802563ad)
 ![image](https://github.com/user-attachments/assets/9040c7fc-8c8e-46de-8cac-6ecf4ad495d7)
+![image](https://github.com/user-attachments/assets/32ac07fd-d1cd-4c1b-a51a-cc8db95d2c3f)
