@@ -42,7 +42,7 @@ data = {
     amount = 555,
 }
 ```
-
+.
 
 ### Preview:
 
