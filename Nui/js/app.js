@@ -212,10 +212,10 @@ new Vue({
         selectPlayerForInspection(player) {
             this.selectedPlayer = player;
             this.selectedPlayerBills = [...player.bills, ...player.billingHistory];
-            this.showPlayerBills = true; // Show the modal
+            this.showPlayerBills = true; 
         },
         closePlayerBills() {
-            this.showPlayerBills = false; // Close the modal
+            this.showPlayerBills = false; 
         }
     },
 });
