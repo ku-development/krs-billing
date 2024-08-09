@@ -148,10 +148,14 @@
         
         <div v-if="view === 'inspectCitizen'" class="content inspect-citizen-content">
             <h2>Inspect Citizen</h2>
-            <div class="form-group">
+            <div class="form-group search-bar">
                 <label for="search-player">Search Player:</label>
-                <input type="text" id="search-player" v-model="searchQuery" placeholder="Enter player name or CID..." />
+                <div class="search-wrapper">
+                    <input type="text" id="search-player" v-model="searchQuery" placeholder="Enter player name or CID..." />
+                    <i class="fas fa-search search-icon"></i>
+                </div>
             </div>
+            
         
             <div v-if="filteredPlayers.length > 0">
                 <div v-for="player in filteredPlayers" :key="player.cid" class="player-card" @click="selectPlayerForInspection(player)">
@@ -162,22 +166,28 @@
                     </div>
                 </div>
             </div>
+            
             <p v-else>No players found.</p>
-        
-            <div v-if="selectedPlayer">
-                <h3>Bills for {{ selectedPlayer.name }}</h3>
+        </div>
+
+        <div v-if="showPlayerBills" class="player-bills-modal">
+            <div class="modal-content">
+                <h2>Bills for {{ selectedPlayer.name }}</h2>
                 <div v-if="selectedPlayerBills.length > 0">
                     <div v-for="bill in selectedPlayerBills" :key="bill.id" class="bill compact">
                         <p><strong>Amount:</strong> {{ bill.amount }}</p>
-                        <p><strong>Reason:</strong> {{ bill.reason }}</p>
+                        <p><strong>Billed by:</strong> {{ bill.billedBy.name }} ({{ bill.billedBy.job }})</p>
                         <p><strong>Date:</strong> {{ bill.date }}</p>
                     </div>
                 </div>
                 <p v-else>No bills found for this player.</p>
+                <div class="modal-actions">
+                    <button @click="closePlayerBills" class="modal-button close-button">Close</button>
+                </div>
             </div>
         </div>
 
-        
+
     </div>
     <script src="https://unpkg.com/vue-select@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>

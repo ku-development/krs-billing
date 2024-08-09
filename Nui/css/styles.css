@@ -524,3 +524,96 @@ select:focus {
 
 
 
+
+/* Player Bills Modal */
+.player-bills-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    z-index: 1000;
+}
+
+.player-bills-modal .modal-content {
+    background: #2c2c2c; 
+    border-radius: 1vw;
+    padding: 3vh 3vw;
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.5);
+    max-width: 40vw;
+    width: 50vw;
+    text-align: left;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inspect-citizen-content {
+    overflow-x: hidden;
+    padding-left: 1vw;
+}
+
+.inspect-citizen-content .player-card {
+    padding: 1vw;
+    margin-right: 0.8vw;
+    transition: border 0.3s ease, transform 0.3s ease;
+}
+
+
+.inspect-citizen-content .player-card:hover {
+    border: 0.2vw solid rgba(78, 142, 247, 1);
+    transform: scale(1.01);
+}
+
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 1vh;
+}
+
+.search-wrapper input {
+    width: 86%;
+    padding: 1.5vh 2vw;
+    padding-right: 4vw; 
+    border-radius: 0.5vw;
+    border: none;
+    font-size: 1.8vh;
+    background-color: #3d3d3d;
+    color: #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-wrapper input::placeholder {
+    color: #bbb;
+}
+
+.search-wrapper input:focus {
+    background-color: #4e4e4e;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.5vw;
+    transform: translateY(-50%);
+    color: #ffffff;
+    opacity: 0.7;
+    pointer-events: none;
+    font-size: 2vh;
+}
+

@@ -4,6 +4,8 @@ new Vue({
     el: '#app',
     data: {
         view: 'myBills',
+        showPlayerBills: false, 
+
         myBills: [
             { id: 1, amount: 100, reason: 'Service Fee', sender: 'Company A', billedBy: { name: 'John Doe', job: 'Mechanic' }, date: '2024-08-09', time: '14:30', paid: false },
             { id: 2, amount: 250, reason: 'Product Purchase', sender: 'Company B', billedBy: { name: 'Jane Smith', job: 'Sales' }, date: '2024-08-08', time: '09:15', paid: false },
@@ -24,11 +26,38 @@ new Vue({
                 cid: "12345",
                 job: "Mechanic",
                 bills: [
-                    { id: 1, amount: 100, reason: 'Service Fee', date: '2024-08-09', paid: false },
-                    { id: 3, amount: 300, reason: 'Consultation', date: '2024-08-07', paid: false }
+                    { 
+                        id: 1, 
+                        amount: 100, 
+                        reason: 'Service Fee', 
+                        date: '2024-08-09', 
+                        paid: false,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    },
+                    { 
+                        id: 3, 
+                        amount: 300, 
+                        reason: 'Consultation', 
+                        date: '2024-08-07', 
+                        paid: false,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    }
                 ],
                 billingHistory: [
-                    { id: 5, amount: 250, reason: 'Product Purchase', date: '2024-08-08', paid: true }
+                    { 
+                        id: 5, 
+                        amount: 250, 
+                        reason: 'Product Purchase', 
+                        date: '2024-08-08', 
+                        paid: true,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    }
                 ]
             },
             {
@@ -36,11 +65,38 @@ new Vue({
                 cid: "67890",
                 job: "Sales",
                 bills: [
-                    { id: 2, amount: 250, reason: 'Product Purchase', date: '2024-08-08', paid: false },
-                    { id: 4, amount: 150, reason: 'Software License', date: '2024-08-06', paid: false }
+                    { 
+                        id: 2, 
+                        amount: 250, 
+                        reason: 'Product Purchase', 
+                        date: '2024-08-08', 
+                        paid: false,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    },
+                    { 
+                        id: 4, 
+                        amount: 150, 
+                        reason: 'Software License', 
+                        date: '2024-08-06', 
+                        paid: false,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    }
                 ],
                 billingHistory: [
-                    { id: 6, amount: 150, reason: 'Software License', date: '2024-08-06', paid: true }
+                    { 
+                        id: 6, 
+                        amount: 150, 
+                        reason: 'Software License', 
+                        date: '2024-08-06', 
+                        paid: true,
+                        billedBy: {
+                            name: 'David Clark', job: 'IT Manager' 
+                        }
+                    }
                 ]
             },
             {
@@ -49,7 +105,7 @@ new Vue({
                 job: "Consultant",
                 bills: [],
                 billingHistory: []
-            }
+            },
         ],
         newBill: {
             reason: '',
@@ -130,6 +186,14 @@ new Vue({
         selectPlayerForInspection(player) {
             this.selectedPlayer = player;
             this.selectedPlayerBills = [...player.bills, ...player.billingHistory];
+        },
+        selectPlayerForInspection(player) {
+            this.selectedPlayer = player;
+            this.selectedPlayerBills = [...player.bills, ...player.billingHistory];
+            this.showPlayerBills = true; // Show the modal
+        },
+        closePlayerBills() {
+            this.showPlayerBills = false; // Close the modal
         }
     },
 });
