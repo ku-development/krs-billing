@@ -32,7 +32,7 @@ body {
     margin: 0;
 }
 
-#app {
+.page {
     width: 48vw;
     height: 74vh;
     max-width: 50vw;
@@ -85,6 +85,7 @@ body {
 .content {
     overflow-y: auto;
     height: 59vh;
+    min-height: 59vh;
     margin-top: 1.5vh;
 }
 .content h2 {
@@ -562,7 +563,7 @@ select:focus {
 .inspect-citizen-content .player-card {
     padding: 1vw;
     margin-right: 0.8vw;
-    transition: border 0.3s ease, transform 0.3s ease;
+    transition: border 0.2s ease, transform 0.7s ease;
 }
 
 
@@ -617,3 +618,12 @@ select:focus {
     font-size: 2vh;
 }
 
+
+/* Define the transition effect */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0;
+}

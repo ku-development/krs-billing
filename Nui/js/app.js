@@ -26,36 +26,36 @@ new Vue({
                 cid: "12345",
                 job: "Mechanic",
                 bills: [
-                    { 
-                        id: 1, 
-                        amount: 100, 
-                        reason: 'Service Fee', 
-                        date: '2024-08-09', 
+                    {
+                        id: 1,
+                        amount: 100,
+                        reason: 'Service Fee',
+                        date: '2024-08-09',
                         paid: false,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     },
-                    { 
-                        id: 3, 
-                        amount: 300, 
-                        reason: 'Consultation', 
-                        date: '2024-08-07', 
+                    {
+                        id: 3,
+                        amount: 300,
+                        reason: 'Consultation',
+                        date: '2024-08-07',
                         paid: false,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     }
                 ],
                 billingHistory: [
-                    { 
-                        id: 5, 
-                        amount: 250, 
-                        reason: 'Product Purchase', 
-                        date: '2024-08-08', 
+                    {
+                        id: 5,
+                        amount: 250,
+                        reason: 'Product Purchase',
+                        date: '2024-08-08',
                         paid: true,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     }
                 ]
@@ -65,41 +65,61 @@ new Vue({
                 cid: "67890",
                 job: "Sales",
                 bills: [
-                    { 
-                        id: 2, 
-                        amount: 250, 
-                        reason: 'Product Purchase', 
-                        date: '2024-08-08', 
+                    {
+                        id: 2,
+                        amount: 250,
+                        reason: 'Product Purchase',
+                        date: '2024-08-08',
                         paid: false,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     },
-                    { 
-                        id: 4, 
-                        amount: 150, 
-                        reason: 'Software License', 
-                        date: '2024-08-06', 
+                    {
+                        id: 4,
+                        amount: 150,
+                        reason: 'Software License',
+                        date: '2024-08-06',
                         paid: false,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     }
                 ],
                 billingHistory: [
-                    { 
-                        id: 6, 
-                        amount: 150, 
-                        reason: 'Software License', 
-                        date: '2024-08-06', 
+                    {
+                        id: 6,
+                        amount: 150,
+                        reason: 'Software License',
+                        date: '2024-08-06',
                         paid: true,
                         billedBy: {
-                            name: 'David Clark', job: 'IT Manager' 
+                            name: 'David Clark', job: 'IT Manager'
                         }
                     }
                 ]
             },
             {
+                name: "Mike Johnson",
+                cid: "11223",
+                job: "Consultant",
+                bills: [],
+                billingHistory: []
+            },
+            {
+                name: "Mike Johnson",
+                cid: "11223",
+                job: "Consultant",
+                bills: [],
+                billingHistory: []
+            },
+            {
+                name: "Mike Johnson",
+                cid: "11223",
+                job: "Consultant",
+                bills: [],
+                billingHistory: []
+            },    {
                 name: "Mike Johnson",
                 cid: "11223",
                 job: "Consultant",
@@ -130,14 +150,16 @@ new Vue({
     },
     methods: {
         setView(view) {
-            this.view = view;
-            if (this.view === 'billPlayer') {
-                this.fetchNearbyPlayers().then(() => {
-                    if (this.nearbyPlayers.length > 0) {
-                        const randomIndex = Math.floor(Math.random() * this.nearbyPlayers.length);
-                        this.selectedPlayer = this.nearbyPlayers[randomIndex];
-                    }
-                });
+            if (this.view !== view) {
+                this.view = view;
+                if (this.view === 'billPlayer') {
+                    this.fetchNearbyPlayers().then(() => {
+                        if (this.nearbyPlayers.length > 0) {
+                            const randomIndex = Math.floor(Math.random() * this.nearbyPlayers.length);
+                            this.selectedPlayer = this.nearbyPlayers[randomIndex];
+                        }
+                    });
+                }
             }
         },
         billPlayer() {
