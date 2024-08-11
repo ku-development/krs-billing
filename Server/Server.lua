@@ -76,3 +76,21 @@ function GetSocietyBills(job)
 
     return societyBills
 end
+
+
+
+RegisterNetEvent("krs-billing:server:billPlayer", function(data)
+    local cid = data.cid
+    local targetCid = data.targetCid
+    local reason = data.reason
+    local amount = data.amount
+
+    local Player = QBCore.Functions.GetPlayerByCitizenId(cid)
+    local TargetPlayer = QBCore.Functions.GetPlayerByCitizenId(targetCid)
+    local job = Player.PlayerData.job
+
+    local JobName = job.name
+    
+    local query = MySQL.query.await("INSERT ")
+
+end)

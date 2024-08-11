@@ -3,6 +3,10 @@ Vue.component('v-select', VueSelect.VueSelect);
 new Vue({
     el: '#app',
     data: {
+        // MY DATA HASLI
+        Cid: '',
+        
+
         view: 'myBills',
         showPlayerBills: false, 
 
@@ -163,6 +167,21 @@ new Vue({
             }
         },
         billPlayer() {
+            fetch(`https://${GetParentResourceName()}/krs-billing:callback:billPlayer`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cid: this.Cid,
+                    reason:this.newBill.reason,
+                    amount: this.newBill.amount,
+                    targetCid: this.selectedPlayer.cid
+                 })
+            }).then(resp => resp.json()).then(resp => {
+                if (resp === 'ok') {
+                } else {
+                }
+            });
             console.log('Billing player with reason:', this.newBill.reason, 'and amount:', this.newBill.amount);
             this.newBill.reason = '';
             this.newBill.amount = 0;
