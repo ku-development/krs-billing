@@ -44,7 +44,7 @@ data = {
 ```
 
 
-### Preview:
+### Preview
 
 ![image](https://github.com/user-attachments/assets/0eb52971-fbcc-4468-b538-e80661ded8b3) 
 ![image](https://github.com/user-attachments/assets/9adb9620-ba1c-4208-950b-22617a3277c9)
