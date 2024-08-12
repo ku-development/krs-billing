@@ -91,9 +91,10 @@ RegisterNetEvent("krs-billing:server:billPlayer", function(data)
 
     local JobName = job.name
     
-    local query = MySQL.query.await("INSERT INTO bills (amount, reason, sender_cid, receiver_cid, date, time, paid) VALUES (?, ?, ?, ?, ?, ?, ?)", {
+    local query = MySQL.query.await("INSERT INTO bills (amount, reason, job, sender_cid, receiver_cid, date, time, paid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", {
         amount, 
-        reason, 
+        reason,
+        JobName,
         cid, 
         targetCid, 
         os.date("%Y-%m-%d"), 
