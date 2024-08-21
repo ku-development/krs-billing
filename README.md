@@ -1,4 +1,4 @@
-# KRS-Billing | V1.0 | Not Finished But Probbley will finish it tommrow its unuseable for now
+# KRS-Billing | V1.0 | Not Finished too lazy to continue will continue in 20 years or so
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](link_to_releases)
 [![License](https://img.shields.io/badge/license-GNU-green.svg)](https://opensource.org/licenses/MIT)
