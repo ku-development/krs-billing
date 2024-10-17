@@ -1,5 +1,18 @@
 ---@diagnostic disable: undefined-global
 
+function sendToDiscord(title, message)
+    local webhookURL = "YOUR_WEBHOOK_URL"
+    local data = {
+        {
+            ["title"] = title,
+            ["description"] = message,
+            ["color"] = 3447003
+        }
+    }
+    PerformHttpRequest(webhookURL, function(err, text, headers) end, 'POST', json.encode({username = "Billing System", embeds = data}), { ['Content-Type'] = 'application/json' })
+end
+
+
 function GetPlayerBills(cid)
     local unpaidBills = {}
     local billingHistory = {}
@@ -101,4 +114,67 @@ RegisterNetEvent("krs-billing:server:billPlayer", function(data)
         os.date("%H:%M:%S"), 
         false
     })
+end)
+
+RegisterNetEvent('krs-billing:payBill', function(billId, payFromJobAccount)
+    local src = source
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    local bill = MySQL.Sync.fetchAll('SELECT * FROM billing WHERE id = @id', {
+        ['@id'] = billId
+    })
+
+    if not bill[1] then
+        TriggerClientEvent('QBCore:Notify', src, 'Bill not found', 'error')
+        return
+    end
+
+    local amount = bill[1].amount
+
+    if payFromJobAccount then
+        if xPlayer.PlayerData.job.isboss then
+            TriggerEvent('qb-bossmenu:server:removeAccountMoney', xPlayer.PlayerData.job.name, amount, function(success)
+                if success then
+                    MySQL.Async.execute('UPDATE billing SET paid = @paid WHERE id = @id', {
+                        ['@paid'] = true,
+                        ['@id'] = billId
+                    })
+                    TriggerClientEvent('QBCore:Notify', src, 'Bill paid from job account', 'success')
+                    sendToDiscord("Bill Paid", "Bill ID: "..billId.." of $"..amount.." paid by "..xPlayer.PlayerData.name.." from the job account")
+                else
+                    TriggerClientEvent('QBCore:Notify', src, 'Not enough funds in job account', 'error')
+                end
+            end)
+        else
+            TriggerClientEvent('QBCore:Notify', src, 'You do not have permission to pay from job account', 'error')
+        end
+    else
+        if xPlayer.Functions.RemoveMoney('cash', amount) then
+            MySQL.Async.execute('UPDATE billing SET paid = @paid WHERE id = @id', {
+                ['@paid'] = true,
+                ['@id'] = billId
+            })
+            TriggerClientEvent('QBCore:Notify', src, 'Bill paid from your cash', 'success')
+            sendToDiscord("Bill Paid", "Bill ID: "..billId.." of $"..amount.." paid by "..xPlayer.PlayerData.name.." from cash")
+        else
+            TriggerClientEvent('QBCore:Notify', src, 'Not enough cash to pay the bill', 'error')
+        end
+    end
+end)
+
+
+RegisterNetEvent('krs-billing:refundBill', function(billId, jobName)
+    local src = source
+    local xPlayer = QBCore.Functions.GetPlayer(src)
+    
+    if xPlayer.PlayerData.job.name == jobName and xPlayer.PlayerData.job.isboss then
+        MySQL.Async.execute('UPDATE billing SET paid = @paid WHERE id = @id', {
+            ['@paid'] = true,
+            ['@id'] = billId
+        })
+        
+        TriggerClientEvent('QBCore:Notify', src, 'Bill refunded successfully', 'success')
+        sendToDiscord("Bill Refunded", "A bill has been refunded by "..xPlayer.PlayerData.name)
+    else
+        TriggerClientEvent('QBCore:Notify', src, 'You do not have permission to refund this bill', 'error')
+    end
 end)

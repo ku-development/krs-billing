@@ -1,5 +1,7 @@
 Config = {}
 
+Config.BillingItem = "billing_tablet" -- Define the item here
+
 Config.Jobs = {
     ['police'] = {
         ['1'] = {
